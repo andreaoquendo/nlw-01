@@ -4,12 +4,13 @@ import path from 'path';
 module.exports = {
     client: 'sqlite3',
     connection: { 
-        // filename: "./src/database/database.sqlite",
          filename: path.resolve(__dirname, 'src', 'database','database.sqlite'),
     },
     migrations: {
-        // filename: "./src/database/migrations",
-        filename: path.resolve(__dirname, 'src', 'database','migrations'),
+        directory: path.resolve(__dirname, 'src', 'database','migrations'),
     }, 
+    seeds: {
+        directory: path.resolve(__dirname, 'src', 'database', 'seeds')
+    },
     useNullAsDefault: true
 };

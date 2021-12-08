@@ -17,5 +17,4 @@ const connection = knex({
     useNullAsDefault: true
 });
 
-// o que é esse default????
 export default connection;
