@@ -11,8 +11,10 @@ __dirname - retorna o diretório no qual o arquivo está
 const connection = knex({
     client: 'sqlite3',
     connection: { 
+        // filename: "./src/database/database.sqlite",
         filename: path.resolve(__dirname, 'database.sqlite'),
-    },
+    }, 
+    useNullAsDefault: true
 });
 
 // o que é esse default????
