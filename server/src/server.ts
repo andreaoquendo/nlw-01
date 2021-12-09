@@ -1,4 +1,6 @@
-import express, { request, response } from 'express';
+import express from 'express';
+import cors from 'cors';
+// npm install @types/cors -D
 import path from 'path';
 import routes from './routes';
 
@@ -24,6 +26,7 @@ AULA 1
 // Criando a aplicação
 const app = express();
 
+app.use(cors());
 /* Por padrão o express não sabe que está lidando com uma API REST, e portanto não vem por padrão entendendo JSON. O app.use define uma nova funcionalidade no app. */
 app.use(express.json());
 app.use(routes);
