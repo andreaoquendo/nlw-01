@@ -14,7 +14,7 @@ const pointsController = new PointsController();
 const itemsController = new ItemsController();
 
 // ele arranja esse items do database?
-// nao enteni mt bem ese async e await
+// nao entendi mt bem ese async e await
 routes.get('/items', itemsController.index);
 
 // por que eu posso receber sem os parâmetros?

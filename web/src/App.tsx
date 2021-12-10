@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import Home from './pages/Home'; // vai diretamente tentar procurar o arquivo Home
+import CreatePoint from './pages/CreatePoint'; 
+// JSX: Sintaxe de XML dentro do JavaScript
+
+// Sempre que temos mais de uma linha de retorno usamos parenteses no return.
+// [valor do estado, função pra atualizar o valor do estado] = useState
+
+/*
+    - Todo componente DEVE começar com letra maiúscula para evitar confusão com tags do HTML
+    - Devemos importar o React mesmo que ele não vá ser utilizado diretamente
+    - Utilizar arrow functions é o mais fácil para poder receber parâmetros E é escalável.
+    - O header também é do tipo function component, ou seja, um componente escrito no formato de função
+    - Enviamos HeaderProps como parâmero para a função. Vale lembrar que em react os parâmetros são generics
+*/
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Home />
   );
 }
 
