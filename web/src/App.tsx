@@ -1,8 +1,11 @@
 import React from 'react';
 import './App.css';
 
-import Home from './pages/Home'; // vai diretamente tentar procurar o arquivo Home
-import CreatePoint from './pages/CreatePoint'; 
+// import Home from './pages/Home'; // vai diretamente tentar procurar o arquivo Home
+// import CreatePoint from './pages/CreatePoint'; 
+
+import Routes from './routes';
+
 // JSX: Sintaxe de XML dentro do JavaScript
 
 // Sempre que temos mais de uma linha de retorno usamos parenteses no return.
@@ -18,7 +21,7 @@ import CreatePoint from './pages/CreatePoint';
 
 function App() {
   return (
-    <Home />
+    <Routes />
   );
 }
 
