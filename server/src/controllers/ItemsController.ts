@@ -8,6 +8,7 @@ class ItemsController {
         /* Ele retorna um mapa com os itens requisitados. */
         const serializedItems = items.map(item => {
             return {
+                id: item.id,
                 title: item.title,
                 image_url: `http://localhost:3334/uploads/${item.image}`
             }
