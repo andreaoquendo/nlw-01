@@ -16,10 +16,6 @@ const Home = () =>{
 
   const navigation = useNavigation<homeScreenProp>();
 
-  function handleNavigateToPoints(){
-    navigation.navigate('Points'); 
-  }
-
   return (
   <ImageBackground 
     source={require('../../assets/home-background.png')} 
@@ -33,7 +29,7 @@ const Home = () =>{
     </View>
 
     <View style={styles.footer}>
-      <RectButton style={styles.button} onPress={handleNavigateToPoints}>
+      <RectButton style={styles.button} onPress={() => {navigation.navigate('Points'); }}>
         <View style={styles.buttonIcon}>
           <Text>
             <Icon name="arrow-right" color='#FFF' size={24}/>
