@@ -9,8 +9,8 @@ import Detail from './pages/Detail';
 
 export type RootStackParamList = {
     Home: undefined;
-    Points: undefined;
-    Detail: undefined;
+    Points: {uf: string, city: string} | undefined;
+    Detail: { point_id: number } | undefined;
 }
 
 const AppStack = createStackNavigator<RootStackParamList>();
