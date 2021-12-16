@@ -1,25 +1,45 @@
 import React from 'react';
-import Constants from 'expo-constants';
-import { Feather as Icon } from '@expo/vector-icons';
+import SafeAreaView from 'react-native-safe-area-view';
+import { Feather as Icon, FontAwesome } from '@expo/vector-icons';
 import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
+import { RectButton } from 'react-native-gesture-handler';
 
 const Detail = () => {
 
     const navigation = useNavigation();
 
     return (
-        <View style={styles.container}>
-            <TouchableOpacity onPress={() => { navigation.goBack(); }}>
-                <Icon name="arrow-left" size={20} color="#34cb79"/>
-            </TouchableOpacity>
+        <SafeAreaView style= {{ flex: 1 }}>
+            <View style={styles.container}>
+                <TouchableOpacity onPress={() => { navigation.goBack(); }}>
+                    <Icon name="arrow-left" size={20} color="#34cb79"/>
+                </TouchableOpacity>
 
-            <Image source={{ uri: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bWFya2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60"}}/>
+                <Image style={styles.pointImage} source={{ uri: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bWFya2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60"}}/>
 
-            <Text style={styles.pointName}>Mercadão do João</Text>
-            <Text style={styles.pointItems}>Lâmpadas, Óleo de Cozinha.</Text>
-        </View>
+                <Text style={styles.pointName}>Mercadão do João</Text>
+                <Text style={styles.pointItems}>Lâmpadas, Óleo de Cozinha.</Text>
+
+                <View style= {styles.address}>
+                    <Text style={styles.addressTitle}>Endereço</Text>
+                    <Text style={styles.addressContent}>Curitiba, PR</Text>
+                </View>
+            </View>
+
+            <View style={styles.footer}>
+                <RectButton style={styles.button} onPress={() =>{}} >
+                    <FontAwesome name="whatsapp" size={20} color="#FFF"/>
+                    <Text style={styles.buttonText}>Whatsapp</Text>
+                </RectButton>
+
+                <RectButton style={styles.button} onPress={() =>{}} >
+                    <Icon name="mail" size={20} color="#FFF"/>
+                    <Text style={styles.buttonText}>E-mail</Text>
+                </RectButton>
+            </View>
+            
+        </SafeAreaView>
     );
 }
 
@@ -27,6 +47,7 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       padding: 32,
+      paddingBottom:32,
       paddingTop: 20,
     },
   
