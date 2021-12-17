@@ -20,7 +20,14 @@ class PointsController{
             .distinct()
             .select('points.*'); // pegar os dados da tabela points
 
-        return response.json(points);
+        const serializedPoints = points.map(point => {
+            return {
+                ...point,
+                image_url: `http://192.168.0.124:3334/uploads/${point.image}`
+            }
+        });
+        
+        return response.json(serializedPoints);
     };
 
     async show(request: Request, response: Response) {
@@ -28,6 +35,11 @@ class PointsController{
 
         // retorna um array, por isso usamos first
         const point = await knex('points').where('id', id).first();
+
+        const serializedPoint = {
+                ...point,
+                image_url: `http://192.168.0.124:3334/uploads/${point.image}`
+        };
 
         if(!point){
             return response.json(400).json({ message: 'Point no t found.'})
@@ -38,7 +50,7 @@ class PointsController{
             .where('point_items.point_id', id)
             .select('items.title');
 
-        return response.json({ point, items });
+        return response.json({ serializedPoint, items });
     };
 
     async create(request: Request, response: Response) {
@@ -59,9 +71,12 @@ class PointsController{
         */
 
         const trx = await knex.transaction();
-
+        /*
+            Nullish Coalescing: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#nullish-coalescing
+            Optional Chaining: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#optional-chaining
+        */
         const point = {
-            image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bWFya2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60',
+            image: request.file?.filename ?? '',
             name,
             email,
             whatsapp,
@@ -77,7 +92,10 @@ class PointsController{
         
         const point_id = insertedIds[0];
 
-        const pointItems = items.map((item_id: number) => {
+        const pointItems = items
+        .split(',')
+        .map((item:string) => Number(item.trim()))
+        .map((item_id: number) => {
             return { 
                 item_id,
                 point_id,
