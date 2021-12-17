@@ -3,6 +3,7 @@ import cors from 'cors';
 // npm install @types/cors -D
 import path from 'path';
 import routes from './routes';
+import { errors } from 'celebrate';
 
 /* 
 AULA 1
@@ -35,4 +36,5 @@ app.use(routes);
 // nao entendi
 app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')));
 
+app.use(errors());
 app.listen(3334);
